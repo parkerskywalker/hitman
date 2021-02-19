@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="col">
+            <div class="table">
+                <table class="table table-responsive">
+                    <h2>Hit's</h2>
+                    {% if hits %}
+                        <thead>
+                            <tr>
+                                <th>Hitman</th>
+                                <th>Description</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if hits %}
+                                {% for hit in hits %}
+                                    <tr>
+                                        <td>
+                                            {% if hit.get_hitman %}
+                                                {% for hitman in hit.get_hitman %}
+                                                    <strong>{{ hitman.nickname }}</strong><br>
+                                                {% endfor %}
+                                            {% else %}
+                                                No yet
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ hit.description }}</td>
+                                        <td>{{ hit.status }}</td>
+                                        <td>
+                                            {% if hit.status.description != "DONE" %}
+                                                    <a href="{% url 'giuseppi:update-hit' hit.id %}" class="btn btn-warning">Update</a>
+                                                    {% if not hit.get_hitman %}
+                                                        <a href="{% url 'giuseppi:assign-hit' hit.id %}" class="btn btn-primary">Assign</a>
+                                                    {% else %}
+                                                        <a href="{% url 'giuseppi:reassign-hit' hit.id %}" class="btn btn-danger">Reassign</a>
+                                                    {% endif %}                                                
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            {% else %}
+                                No hit's yet
+                            {% endif %}
+                        </tbody>
+                    {% else %}
+                        No hay hits creados
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

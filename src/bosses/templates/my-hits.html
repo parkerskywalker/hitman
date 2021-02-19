@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="table">
+            <h2>My team</h2>
+            <table class="table table-responsive">
+                <thead>
+                    <tr>
+                        <th>Nickname</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Hit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if boss.get_hitmans %}
+                        {% for hitman in boss.get_hitmans %}
+                            <tr>
+                                <td>{{ hitman.nickname }}</td>
+                                <td>{{ hitman.description }}</td>
+                                <td>{{ hitman.status }}</td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td>
+                            <label style="color:red;">No hitman's assigned</label>
+                        </td>
+                    </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

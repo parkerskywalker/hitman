@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <form class="form-group" method="POST">
+            {% csrf_token %}
+            <ul>
+                <li style="color:red;"><h3>{{ hits.description }}</h3></li>
+            </ul>
+            <ul>
+                <li>
+                    <select class="form-group" name="hitman" id="id_hitman">
+                        <option value="">---------</option>
+                        {% for hitman in hitmans %}
+                            <option value="{{ hitman.id }}-{{ hitman.type }}">{{ hitman.nickname }}</option>
+                        {% endfor %}
+                    </select>
+                </li>
+            </ul>
+            <input type="submit" name="" value="Aceptar" class="btn btn-success">
+        </form>
+    </div>
+{% endblock %}

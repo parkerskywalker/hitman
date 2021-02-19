@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="table">
+            <table class="table table-responsive">
+                <h2>Bosse's</h2>
+                {% if bosses %}
+                    <thead>
+                        <tr>
+                            <th>Nickname</th>
+                            <th>Description</th>
+                            <th>Status Boss</th>
+                            <th>Hit</th>
+                            <th>Status hit</th>
+                            <th>Hitman's</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for boss in bosses %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'giuseppi:update-boss' boss.id %}">{{ boss.nickname }}</a>
+                                </td>
+                                <td>{{ boss.description }}</td>
+                                <td>
+
+                                    <label
+                                        style="
+                                            {% if boss.status.description == "Active" %}
+                                                color:green;
+                                            {% elif boss.status.description == "Down" %}
+                                                color:red;
+                                            {% elif boss.status.description == "Inactive" %}
+                                                color:gray;
+                                            {% endif %}">
+                                        {{ boss.status }}
+                                    </label>
+                                </td>
+                                <td>
+                                    {% if boss.hit %}
+                                        {{ boss.hit.description }}
+                                    {% else %}
+                                        No hit's assigned
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if boss.hit %}
+                                        {{ boss.hit.status }}
+                                    {% else %}
+                                        --
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if boss.get_hitmans %}
+                                        {% for hitman in boss.get_hitmans %}
+                                            {{ hitman.nickname }}<br>
+                                        {% endfor %}
+                                    {% else %}
+                                        No hitman's assigned
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                {% else %}
+                    No bosse's
+                {% endif %}
+            </table>
+        </div>
+        <div class="table">
+            <table class="table table-responsive">
+                <h2>Hitman's</h2>
+                {% if hitmans %}
+                    <thead>
+                        <tr>
+                            <th>Nickname</th>
+                            <th>Description</th>
+                            <th>Status Hitman</th>
+                            <th>Hit</th>
+                            <th>Status hit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for hitman in hitmans %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'giuseppi:update-hitman' hitman.id %}">{{ hitman.nickname }}</a>
+                                </td>
+                                <td>{{ hitman.description }}</td>
+                                <td>
+
+                                    <label style="
+                                        {% if hitman.status.description == "Active" %}
+                                            color:green;
+                                        {% elif hitman.status.description == "Inactive" %}
+                                            color:gray;
+                                        {% elif hitman.status.description == "Down" %}
+                                            color:red;
+                                        {% endif %}
+                                        ">
+                                        {{ hitman.status }}
+                                    </label>
+                                </td>
+                                <td>
+                                    {% if hitman.hit %}
+                                        {{ hitman.hit.description }}
+                                    {% else %}
+                                        No hit's assigned
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if hitman.hit.status %}
+                                        {{ hitman.hit.status }}
+                                    {% else %}
+                                        ---
+                                    {% endif %}
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                {% else %}
+                    No hitman's
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

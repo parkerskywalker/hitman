@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="table">
+            <table class="table table-responsive">
+                {% if object_list %}
+                    <thead>
+                        <tr>
+                            <th>Mission</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    {% for hit in object_list %}
+                        <tr>
+                            <td>{{ hit.description }}</td>
+                            <td>{{ hit.status }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    No hit's registered.
+                {% endif %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

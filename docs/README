@@ -1,0 +1,82 @@
+"""
+a) Los requirements.txt se encuentran en la carpeta "etc".
+b) En el requirements.txt viene un plugin llamado "ipdb". Es para debuggear (preferible instalarlo)
+c) En caso de que no sirva la base de datos añadida:
+    - Hay que llenar los siguientes catalogos desde el admin (respetando mayusculas y minusculas):
+        -- Profiles.
+                Datos: Boss, Hitman
+        -- Status hit's
+                Datos: ASSIGNED, UNASSIGNED, CANCELED
+        -- Status hitman's
+                Datos: Active, Inactive, Down
+
+    - Añadir grupo Boss en los grupos. Añadir todos los permisos de hits
+
+d) Los datos del root son:
+    giussepi
+    parker_1978@hotmail.com
+    password:   7h8j9k0l
+
+    datos boss para prueba:
+        redrichards@redrichards.com
+        12345
+
+        eddiemurphy@eddiemurphy.com
+        12345
+
+        doctoroctupos@doctoroctupos.com
+        12345
+
+    datos hitman para prueba:
+        unabomber@unabomber.com
+        12345
+
+        psy@psy.com
+        12345
+
+        covid19@covid19.com
+        12345
+
+        stellman@stellman.com
+        12345
+
+        ghost@ghost.com
+        12345
+
+        viudanegra@viudanegra.com
+        12345
+
+        swampthing@swampthing.com
+        12345
+
+        babymetal@babymetal.com
+        12345
+
+        pyro@pyro.com
+        12345
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
